@@ -39,9 +39,7 @@ const rolechecker = (roles = []) => {
 }
 
 //books
-app.all('*', (req, res) => {
-  res.status(404).json({ error: 'Invalid API request. The requested endpoint does not exist.' });
-});
+
 
 app.post('/books',authenticate,rolechecker(['admin','lib']), async (req, res) => {
     try {
@@ -298,3 +296,6 @@ app.delete('/auth/users/:uid',authenticate,rolechecker(['admin']),async (req,res
     }
 });
 
+app.all('*', (req, res) => {
+  res.status(404).json({ error: 'Invalid API request. The requested endpoint does not exist.' });
+});
