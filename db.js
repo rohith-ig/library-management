@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     uid : {type: Number,required: true},
     name : {type: String,required: true},
     email : {type: String,required: true},
-    membership : {type: String,required: true,default:"Regular"},
+    membership : {type: String,default:"Regular"},
     registered_date : {type: Date,default:Date.now},
     password : {type: String,required:true},
     role : {type: String,default:"user"}

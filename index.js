@@ -240,7 +240,7 @@ app.post('/auth/login', async (req, res) => {
     const { uid, password } = req.body;
     
     if (!uid || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
+      return res.status(400).json({ error: 'UID and password are required' });
     }
 
     const user = await User.findOne({ uid: uid });
