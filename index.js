@@ -39,6 +39,10 @@ const rolechecker = (roles = []) => {
 }
 
 //books
+app.all('*', (req, res) => {
+  res.status(404).json({ error: 'Invalid API request. The requested endpoint does not exist.' });
+});
+
 app.post('/books',authenticate,rolechecker(['admin','lib']), async (req, res) => {
     try {
       const {bid,title, author, published_year, genre, available_copies } = req.body;
