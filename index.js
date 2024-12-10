@@ -141,7 +141,7 @@ app.delete('/books/:bid',authenticate,rolechecker(['lib','admin']),async (req,re
   }
 })
 
-app.listen(6960,()=>{console.log("listening")});
+app.listen(process.env.PORT || 6960,()=>{console.log("listening")});
 
 //user
 app.post('/auth/users',async(req,res) => {
