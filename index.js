@@ -41,7 +41,6 @@ const rolechecker = (roles = []) => {
 //books
 app.post('/books',authenticate,rolechecker(['admin','lib']), async (req, res) => {
     try {
-      // Data from the request body
       const {bid,title, author, published_year, genre, available_copies } = req.body;
       const find = await Book.findOne({bid:bid});
       if (find) return res.status(403).json({"Error":`Book with bid ${bid} already exists`});
@@ -166,8 +165,7 @@ app.post('/auth/users',async(req,res) => {
       membership
     })
     await upData.save();
-    delete upData.password;
-    res.status(200).json({"Success":"Added user",upData});
+    res.status(200).json({"Success":"Added user",uid,name,email,role,membership});
   }
   catch(e) {
     res.status(500).json({"Error":"Server Error"});
